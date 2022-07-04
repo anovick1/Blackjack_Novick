@@ -11,9 +11,11 @@ let statLine = document.createElement('h1')
 let startBtn = document.createElement('button')
 let hitBtn = document.createElement('button')
 let standBtn = document.createElement('button')
+let playAgain = document.createElement('button')
 startBtn.innerText = 'Play Game'
 hitBtn.innerText = 'Hit'
 standBtn.innerText = 'Stand'
+playAgain.innerText = 'Play Again?'
 buttons.append(startBtn)
 
 let d0 = document.querySelector('#d0')
@@ -37,37 +39,46 @@ let userCard2 = document.createElement('h1')
 let userCard3 = document.createElement('h1')
 let userCard4 = document.createElement('h1')
 
+let winningText = document.createElement('h1')
+buttons.append(winningText)
+
 /// make card objects
 // 0 = hearts
 // 1 = clubs
 // 2 = spades
 // 3 = diamonds
-for (let i = 2; i < 15; i++) {
-  for (let j = 0; j < 4; j++) {
-    if (i === 14) {
-      cards.push({
-        card: i,
-        suit: j,
-        picked: false,
-        value: 11
-      })
-    } else if (i > 9) {
-      cards.push({
-        card: i,
-        suit: j,
-        picked: false,
-        value: 10
-      })
-    } else {
-      cards.push({
-        card: i,
-        suit: j,
-        picked: false,
-        value: i
-      })
+const makeDeck = () => {
+  for (let i = 2; i < 15; i++) {
+    for (let j = 0; j < 4; j++) {
+      if (i === 14) {
+        cards.push({
+          card: i,
+          suit: j,
+          picked: false,
+          value: 11
+        })
+      } else if (i > 9) {
+        cards.push({
+          card: i,
+          suit: j,
+          picked: false,
+          value: 10
+        })
+      } else {
+        cards.push({
+          card: i,
+          suit: j,
+          picked: false,
+          value: i
+        })
+      }
     }
   }
+  // for (let i = 0; i < cards.length; i++) {
+  //   console.log(cards[i].picked)
+  // }
 }
+/// returns random card object that has not been used yet
 const dealCard = () => {
   let index = Math.round(Math.random() * 52)
   let newCard = cards[index]
@@ -79,6 +90,7 @@ const dealCard = () => {
   return newCard
 }
 
+/// updates sum of player's cards
 const sum = () => {
   dealerSum = 0
   userSum = 0
@@ -92,6 +104,8 @@ const sum = () => {
   stats.append(statLine)
 }
 
+/// deals cards to dealer when their sum is < 17
+/// add more logic later
 const dealerHit = () => {
   if (dealerSum < 17) {
     if (dealer.length === 2) {
@@ -111,11 +125,67 @@ const dealerHit = () => {
   sum()
 }
 
+const checkWinner = () => {
+  if (userSum > 21) {
+    winningText.innerText = 'YOU BUSTED!'
+    hitBtn.style.display = 'none'
+    standBtn.style.display = 'none'
+    startBtn.style.display = 'inline-block'
+  } else if (dealerSum > 21) {
+    winningText.innerText = 'DEALER BUSTED, YOU WIN!'
+    hitBtn.style.display = 'none'
+    standBtn.style.display = 'none'
+    startBtn.style.display = 'inline-block'
+  } else if (dealerSum > userSum) {
+    winningText.innerText = 'DEALER WINS!'
+    hitBtn.style.display = 'none'
+    standBtn.style.display = 'none'
+    startBtn.style.display = 'inline-block'
+  } else if (dealerSum < userSum) {
+    winningText.innerText = 'YOU WIN!'
+    hitBtn.style.display = 'none'
+    standBtn.style.display = 'none'
+    startBtn.style.display = 'inline-block'
+  } else {
+    winningText.innerText = 'TIE!'
+    hitBtn.style.display = 'none'
+    standBtn.style.display = 'none'
+    startBtn.style.display = 'inline-block'
+  }
+}
+
+/// resets game board
+const reset = () => {
+  cards = []
+  makeDeck()
+  hitBtn.style.display = 'inline-block'
+  standBtn.style.display = 'inline-block'
+  winningText.innerText = 'Hit or stand?'
+  user = []
+  dealer = []
+  userSum = 0
+  dealerSum = 0
+  dealerCard0.innerText = ''
+  dealerCard1.innerText = ''
+  dealerCard2.innerText = ''
+  dealerCard3.innerText = ''
+  dealerCard4.innerText = ''
+  userCard0.innerText = ''
+  userCard1.innerText = ''
+  userCard2.innerText = ''
+  userCard3.innerText = ''
+  userCard4.innerText = ''
+  sum()
+}
 //////
 ////// EVENT LISTENERS
 //////
 
+/// Start Button starts game and deals 2 cards to players
 startBtn.addEventListener('click', () => {
+  winningText.innerText = 'Hit or Stand?'
+
+  reset()
   user.push(dealCard())
   userCard0.innerText = user[0].value
   u0.append(userCard0)
@@ -137,6 +207,7 @@ startBtn.addEventListener('click', () => {
   buttons.append(standBtn)
 })
 
+/// Hit button activates hit for user and simulates a turn for dealer
 hitBtn.addEventListener('click', () => {
   if (user.length === 2) {
     user.push(dealCard())
@@ -153,11 +224,17 @@ hitBtn.addEventListener('click', () => {
   }
   dealerHit()
   sum()
+  if (dealerSum > 21 || userSum > 21) {
+    checkWinner()
+  }
 })
 
+/// stand simulates rest rest of game for computer
 standBtn.addEventListener('click', () => {
   while (dealerSum < 17) {
     dealerHit()
-    console.log('cock')
   }
+  hitBtn.style.display = 'none'
+  standBtn.style.display = 'none'
+  checkWinner()
 })

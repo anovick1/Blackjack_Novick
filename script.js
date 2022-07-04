@@ -6,6 +6,7 @@ let dealerSum = 0
 
 let buttons = document.querySelector('buttons')
 let stats = document.querySelector('.stats')
+let statLine = document.createElement('h1')
 
 let d0 = document.querySelector('#d0')
 let d1 = document.querySelector('#d1')
@@ -62,12 +63,24 @@ for (let i = 2; i < 15; i++) {
 const dealCard = () => {
   let index = Math.round(Math.random() * 52)
   let newCard = cards[index]
-  while (newCard.picked == 'false') {
+  while (newCard.picked == 'true') {
     index = Math.round(Math.random() * 52)
     newCard = cards[index]
   }
   cards[index].picked = true
   return newCard
+}
+
+const sum = () => {
+  for (let i = 0; i < dealer.length; i++) {
+    dealerSum += dealer[i].value
+  }
+  for (let i = 0; i < user.length; i++) {
+    userSum += user[i].value
+  }
+  statLine.innerText =
+    ' Dealer Sum is: ' + dealerSum + '\n\nYour Sum: ' + userSum
+  stats.append(statLine)
 }
 
 const start = () => {
@@ -86,16 +99,7 @@ const start = () => {
   dealer.push(dealCard())
   dealerCard1.innerText = dealer[1].value
   d1.append(dealerCard1)
+  sum()
 }
+
 start()
-
-const sum = () => {
-  for (let i = 0; i < dealer.length; i++) {
-    dealerSum += dealer[i].value
-  }
-  for (let i = 0; i < user.length; i++) {
-    userSum += user[i].value
-  }
-}
-
-sum()

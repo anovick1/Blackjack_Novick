@@ -24,3 +24,8 @@ header {
   height: 150px;
   border: solid white 2px;
 }
+
+.buttons {
+  display: flex;
+  align-items: right;
+}

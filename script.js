@@ -4,9 +4,12 @@ let user = []
 let userSum = 0
 let dealerSum = 0
 
-let buttons = document.querySelector('buttons')
+let buttons = document.querySelector('.buttons')
 let stats = document.querySelector('.stats')
 let statLine = document.createElement('h1')
+let startBtn = document.createElement('button')
+startBtn.innerText = 'Play Game'
+buttons.append(startBtn)
 
 let d0 = document.querySelector('#d0')
 let d1 = document.querySelector('#d1')
@@ -78,12 +81,11 @@ const sum = () => {
   for (let i = 0; i < user.length; i++) {
     userSum += user[i].value
   }
-  statLine.innerText =
-    ' Dealer Sum is: ' + dealerSum + '\n\nYour Sum: ' + userSum
+  statLine.innerText = ' Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
   stats.append(statLine)
 }
 
-const start = () => {
+startBtn.addEventListener('click', () => {
   user.push(dealCard())
   userCard0.innerText = user[0].value
   u0.append(userCard0)
@@ -100,6 +102,5 @@ const start = () => {
   dealerCard1.innerText = dealer[1].value
   d1.append(dealerCard1)
   sum()
-}
-
-start()
+  startBtn.style.display = 'none'
+})

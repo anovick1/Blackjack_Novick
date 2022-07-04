@@ -32,26 +32,30 @@ Have Fun!
 
 ### **Screenshots**
 
-##### Image header 1
+##### Start Screen
 
-![Image](https://cdn.nba.com/manage/2022/06/GettyImages-1241354521-1568x1008.jpg)
+![Image](start.png)
 
-##### Image header 2
+##### Playing Screen
 
-![Image](https://www.nbcsports.com/sites/rsnunited/files/article/hero/steph-curry-trophies-GettyImages-1241357123.jpg)
+![Image](playing.png)
+
+##### Final Screen
+
+![Image](winner.png)
 
 ---
 
 ### **Task Lists**
 
-- [ ] Future Update 1
-- [ ] Future Update 2
-- [x] Completed Update
-- [x] ~~Strikethrough~~ Items Also
+- [ ] Card images + dealing animations
+- [ ] Gambling
+- [x] Simple working JS
+- [x] Simple UI
 
 ---
 
-### **Credits**
+<!-- ### **Credits**
 
 ##### Steph Images: [NBC Sports](https://www.nbcsports.com/sites/rsnunited/files/article/hero/steph-curry-trophies-GettyImages-1241357123.jpg) and [NBA.com](NBA.com)
 
@@ -59,4 +63,4 @@ Have Fun!
 
 ##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
 
----
+--- -->

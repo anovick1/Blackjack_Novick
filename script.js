@@ -1,9 +1,11 @@
+let cards = []
+let dealer = []
+let user = []
 /// make card objects
 // 0 = hearts
 // 1 = clubs
 // 2 = spades
 // 3 = diamonds
-let cards = []
 for (let i = 2; i < 15; i++) {
   for (let j = 0; j < 4; j++) {
     if (i === 14) {
@@ -30,12 +32,24 @@ for (let i = 2; i < 15; i++) {
     }
   }
 }
-console.log(cards)
 const dealCard = () => {
-  let newCard = cards[Math.round(Math.random() * 52)]
+  let index = Math.round(Math.random() * 52)
+  let newCard = cards[index]
   while (newCard.picked == 'false') {
-    newCard = cards[Math.round(Math.random() * 52)]
+    index = Math.round(Math.random() * 52)
+    newCard = cards[index]
   }
+  cards[index].picked = true
+  return newCard
 }
 
-dealCard()
+const start = () => {
+  user.push(dealCard())
+  dealer.push(dealCard())
+  user.push(dealCard())
+  dealer.push(dealCard())
+}
+start()
+console.log(user)
+console.log(dealer)
+const sum = () => {}

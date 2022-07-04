@@ -108,7 +108,12 @@ const dealerHit = () => {
       d4.append(dealerCard4)
     }
   }
+  sum()
 }
+
+//////
+////// EVENT LISTENERS
+//////
 
 startBtn.addEventListener('click', () => {
   user.push(dealCard())
@@ -153,5 +158,6 @@ hitBtn.addEventListener('click', () => {
 standBtn.addEventListener('click', () => {
   while (dealerSum < 17) {
     dealerHit()
+    console.log('cock')
   }
 })

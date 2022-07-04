@@ -1,0 +1,26 @@
+body {
+  text-align: center;
+  background-color: gray;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url(felt-backgroun.jpeg);
+  background-size: cover;
+}
+header {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, 150px);
+  grid-template-rows: repeat(2, 300px);
+  justify-content: center;
+}
+.card {
+  background-color: black;
+  width: 75px;
+  height: 150px;
+  border: solid white 2px;
+}

@@ -1,32 +1,32 @@
-# Project Title
+# Blackjack
 
-## Date: 6/22/2022
+## Date: 7/1/2022
 
 ### By: Avery Novick
 
-#### [Website](http://www.duckduckgo.com) | [GitHub](https://github.com/anovick1) | [LinkedIn](https://www.linkedin.com/in/avery-novick-8651a7176/)
+#### [GitHub](https://github.com/anovick1) | [LinkedIn](https://www.linkedin.com/in/avery-novick-8651a7176/)
 
 ---
 
 ### **Description**
 
-#### a description
+#### A simple blackjack game vs the computer.
 
 ---
 
 ### **Technologies Used**
 
-- Technology 1
-- Technology 2
-  - Sub-item 1
-  - Sub-item 2
-- Technology 3
+- HTML
+- CSS
+- JavaScript
 
 ---
 
 ### **Getting Started**
 
-Sign up and sign in...
+After you (optionally fork and) clone this repo, open index.html and start playing!
+
+Have Fun!
 
 ---
 

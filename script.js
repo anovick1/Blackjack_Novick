@@ -1,6 +1,19 @@
 let cards = []
 let dealer = []
 let user = []
+let userSum = 0
+let dealerSum = 0
+let c0 = document.querySelector('c0')
+let c1 = document.querySelector('c1')
+let c2 = document.querySelector('c2')
+let c3 = document.querySelector('c3')
+let c4 = document.querySelector('c4')
+let c5 = document.querySelector('c5')
+let c6 = document.querySelector('c6')
+let c7 = document.querySelector('c7')
+let c8 = document.querySelector('c8')
+let c9 = document.querySelector('c9')
+
 /// make card objects
 // 0 = hearts
 // 1 = clubs
@@ -50,6 +63,16 @@ const start = () => {
   dealer.push(dealCard())
 }
 start()
-console.log(user)
-console.log(dealer)
-const sum = () => {}
+
+const sum = () => {
+  for (let i = 0; i < dealer.length; i++) {
+    dealerSum += dealer[i].value
+  }
+  for (let i = 0; i < user.length; i++) {
+    userSum += user[i].value
+  }
+}
+
+sum()
+console.log(userSum)
+console.log(dealerSum)

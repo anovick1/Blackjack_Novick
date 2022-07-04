@@ -80,10 +80,10 @@ const makeDeck = () => {
 }
 /// returns random card object that has not been used yet
 const dealCard = () => {
-  let index = Math.round(Math.random() * 52)
+  let index = Math.round(Math.random() * 52) - 1
   let newCard = cards[index]
   while (newCard.picked == 'true') {
-    index = Math.round(Math.random() * 52)
+    index = Math.round(Math.random() * 52) - 1
     newCard = cards[index]
   }
   cards[index].picked = true

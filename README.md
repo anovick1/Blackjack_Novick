@@ -55,12 +55,12 @@ Have Fun!
 
 ---
 
-<!-- ### **Credits**
+### **Resources**
 
-##### Steph Images: [NBC Sports](https://www.nbcsports.com/sites/rsnunited/files/article/hero/steph-curry-trophies-GettyImages-1241357123.jpg) and [NBA.com](NBA.com)
+##### [Trello Link](https://trello.com/b/CD2kXIiL/project-1)
 
-##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
+<!-- ##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
 
-##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) -->
 
---- -->
+---

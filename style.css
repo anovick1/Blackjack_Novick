@@ -25,7 +25,13 @@ header {
   border: solid white 2px;
 }
 
+button {
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 25px;
+  width: 200px;
+}
+
 .buttons {
-  display: flex;
-  align-items: right;
+  padding-bottom: 50px;
 }

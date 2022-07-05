@@ -43,41 +43,224 @@ let winningText = document.createElement('h1')
 buttons.append(winningText)
 
 /// make card objects
-// 0 = hearts
-// 1 = clubs
-// 2 = spades
-// 3 = diamonds
+// 0 = clubs
+// 1 = diamonds
+// 2 = hearts
+// 3 = spades
 const makeDeck = () => {
   for (let i = 2; i < 15; i++) {
     for (let j = 0; j < 4; j++) {
-      if (i === 14) {
-        cards.push({
-          card: i,
-          suit: j,
-          picked: false,
-          value: 11
-        })
-      } else if (i > 9) {
-        cards.push({
-          card: i,
-          suit: j,
-          picked: false,
-          value: 10
-        })
-      } else {
-        cards.push({
-          card: i,
-          suit: j,
-          picked: false,
-          value: i
-        })
+      ///
+      /// clubs
+      if (j === 0) {
+        if (i === 14) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 11,
+            img: 'ace_of_clubs.png'
+          })
+        } else if (i === 11) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'jack_of_clubs.png'
+          })
+        } else if (i === 12) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'queen_of_clubs.png'
+          })
+        } else if (i === 13) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'king_of_clubs.png'
+          })
+        } else {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: i,
+            img: i + '_of_clubs.png'
+          })
+        }
       }
+      ////
+      /// diamonds
+      else if (j === 1) {
+        if (i === 14) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 11,
+            img: 'ace_of_diamonds.png'
+          })
+        } else if (i === 11) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'jack_of_diamonds.png'
+          })
+        } else if (i === 12) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'queen_of_diamonds.png'
+          })
+        } else if (i === 13) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'king_of_diamonds.png'
+          })
+        } else {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: i,
+            img: i + '_of_diamonds.png'
+          })
+        }
+      }
+
+      ////
+      /// hearts
+      else if (j === 2) {
+        /// hearts
+        if (i === 14) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 11,
+            img: 'ace_of_hearts.png'
+          })
+        } else if (i === 11) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'jack_of_hearts.png'
+          })
+        } else if (i === 12) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'queen_of_hearts.png'
+          })
+        } else if (i === 13) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'king_of_hearts.png'
+          })
+        } else {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: i,
+            img: i + '_of_hearts.png'
+          })
+        }
+      }
+
+      ////
+      /// spades
+      else {
+        /// hearts
+        if (i === 14) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 11,
+            img: 'ace_of_spades.png'
+          })
+        } else if (i === 11) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'jack_of_spades.png'
+          })
+        } else if (i === 12) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'queen_of_spades.png'
+          })
+        } else if (i === 13) {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: 10,
+            img: 'king_of_spades.png'
+          })
+        } else {
+          cards.push({
+            card: i,
+            suit: j,
+            picked: false,
+            value: i,
+            img: i + '_of_spades.png'
+          })
+        }
+      }
+
+      // if (i === 14) {
+      //   cards.push({
+      //     card: i,
+      //     suit: j,
+      //     picked: false,
+      //     value: 11
+      //   })
+      // } else if (i > 9) {
+      //   cards.push({
+      //     card: i,
+      //     suit: j,
+      //     picked: false,
+      //     value: 10
+      //   })
+      // } else {
+      //   cards.push({
+      //     card: i,
+      //     suit: j,
+      //     picked: false,
+      //     value: i
+      //   })
+      // }
     }
   }
-  // for (let i = 0; i < cards.length; i++) {
-  //   console.log(cards[i].picked)
-  // }
 }
+
 /// returns random card object that has not been used yet
 const dealCard = () => {
   let index = Math.round(Math.random() * 52) - 1

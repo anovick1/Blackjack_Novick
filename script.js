@@ -356,10 +356,7 @@ const reset = () => {
 
 /// Start Button starts game and deals 2 cards to players
 startBtn.addEventListener('click', () => {
-  flip.src = ''
   winningText.innerText = 'Hit or Stand?'
-  console.log(dealer)
-
   reset()
   user.push(dealCard())
   userCard0.src = user[0].img
@@ -383,6 +380,7 @@ startBtn.addEventListener('click', () => {
   buttons.append(standBtn)
 })
 
+/// flips dealers card
 const flipCard = () => {
   d1.removeChild(dealerCard1)
   dealerCard1.src = flip.src

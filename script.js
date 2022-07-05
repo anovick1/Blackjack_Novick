@@ -17,6 +17,7 @@ hitBtn.innerText = 'Hit'
 standBtn.innerText = 'Stand'
 playAgain.innerText = 'Play Again?'
 buttons.append(startBtn)
+let flip = document.createElement('img')
 
 let d0 = document.querySelector('#d0')
 let d1 = document.querySelector('#d1')
@@ -292,30 +293,35 @@ const checkWinner = () => {
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    flipCard()
   } else if (dealerSum > 21) {
     winningText.innerText = 'DEALER BUSTED, YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    flipCard()
   } else if (dealerSum > userSum) {
     winningText.innerText = 'DEALER WINS!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    flipCard()
   } else if (dealerSum < userSum) {
     winningText.innerText = 'YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    flipCard()
   } else {
     winningText.innerText = 'TIE!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    flipCard()
   }
 }
 
@@ -328,6 +334,7 @@ const reset = () => {
   winningText.innerText = 'Hit or stand?'
   user = []
   dealer = []
+  console.log(dealer)
   userSum = 0
   dealerSum = 0
   dealerCard0.src = ''
@@ -340,6 +347,7 @@ const reset = () => {
   userCard2.src = ''
   userCard3.src = ''
   userCard4.src = ''
+  flip.src = ''
   sum()
 }
 //////
@@ -348,7 +356,9 @@ const reset = () => {
 
 /// Start Button starts game and deals 2 cards to players
 startBtn.addEventListener('click', () => {
+  flip.src = ''
   winningText.innerText = 'Hit or Stand?'
+  console.log(dealer)
 
   reset()
   user.push(dealCard())
@@ -364,13 +374,20 @@ startBtn.addEventListener('click', () => {
   u1.append(userCard1)
 
   dealer.push(dealCard())
+  flip.src = dealer[1].img
   dealerCard1.src = 'PNG-cards-1.3/Pomegranate.png'
-  d1.append(dealerCard1)
+  d1.appendChild(dealerCard1)
   sum()
   startBtn.style.display = 'none'
   buttons.append(hitBtn)
   buttons.append(standBtn)
 })
+
+const flipCard = () => {
+  d1.removeChild(dealerCard1)
+  dealerCard1.src = flip.src
+  d1.append(dealerCard1)
+}
 
 /// Hit button activates hit for user and simulates a turn for dealer
 hitBtn.addEventListener('click', () => {
@@ -395,7 +412,7 @@ hitBtn.addEventListener('click', () => {
 
 /// stand simulates rest rest of game for computer
 standBtn.addEventListener('click', () => {
-  dealerCard1.src = dealer[1].img
+  flipCard()
   while (dealerSum < 17) {
     dealerHit()
   }

@@ -23,9 +23,22 @@ header {
   width: 80px;
   height: 116px;
   border: solid white 2px;
+  /* transform: scaleX(0); */
+  transform-origin: left;
+  animation: reveal 0.5s ease-in-out forwards;
+}
+img:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  animation: reveal 1s reverse forwards;
 }
 img {
   max-width: 80px;
+  transform-origin: top;
+  animation: reveal1 1s ease-in-out forwards;
 }
 button {
   margin-left: 50px;
@@ -36,4 +49,22 @@ button {
 
 .buttons {
   padding-bottom: 50px;
+}
+
+@keyframes reveal1 {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }

@@ -28,16 +28,16 @@ let u1 = document.querySelector('#u1')
 let u2 = document.querySelector('#u2')
 let u3 = document.querySelector('#u3')
 let u4 = document.querySelector('#u4')
-let dealerCard0 = document.createElement('h1')
-let dealerCard1 = document.createElement('h1')
-let dealerCard2 = document.createElement('h1')
-let dealerCard3 = document.createElement('h1')
-let dealerCard4 = document.createElement('h1')
-let userCard0 = document.createElement('h1')
-let userCard1 = document.createElement('h1')
-let userCard2 = document.createElement('h1')
-let userCard3 = document.createElement('h1')
-let userCard4 = document.createElement('h1')
+let dealerCard0 = document.createElement('img')
+let dealerCard1 = document.createElement('img')
+let dealerCard2 = document.createElement('img')
+let dealerCard3 = document.createElement('img')
+let dealerCard4 = document.createElement('img')
+let userCard0 = document.createElement('img')
+let userCard1 = document.createElement('img')
+let userCard2 = document.createElement('img')
+let userCard3 = document.createElement('img')
+let userCard4 = document.createElement('img')
 
 let winningText = document.createElement('h1')
 buttons.append(winningText)
@@ -59,7 +59,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 11,
-            img: 'ace_of_clubs.png'
+            img: 'PNG-cards-1.3/ace_of_clubs.png'
           })
         } else if (i === 11) {
           cards.push({
@@ -67,7 +67,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'jack_of_clubs.png'
+            img: 'PNG-cards-1.3/jack_of_clubs.png'
           })
         } else if (i === 12) {
           cards.push({
@@ -75,7 +75,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'queen_of_clubs.png'
+            img: 'PNG-cards-1.3/queen_of_clubs.png'
           })
         } else if (i === 13) {
           cards.push({
@@ -83,7 +83,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'king_of_clubs.png'
+            img: 'PNG-cards-1.3/king_of_clubs.png'
           })
         } else {
           cards.push({
@@ -91,7 +91,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: i,
-            img: i + '_of_clubs.png'
+            img: 'PNG-cards-1.3/' + i + '_of_clubs.png'
           })
         }
       }
@@ -104,7 +104,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 11,
-            img: 'ace_of_diamonds.png'
+            img: 'PNG-cards-1.3/ace_of_diamonds.png'
           })
         } else if (i === 11) {
           cards.push({
@@ -112,7 +112,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'jack_of_diamonds.png'
+            img: 'PNG-cards-1.3/jack_of_diamonds.png'
           })
         } else if (i === 12) {
           cards.push({
@@ -120,7 +120,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'queen_of_diamonds.png'
+            img: 'PNG-cards-1.3/queen_of_diamonds.png'
           })
         } else if (i === 13) {
           cards.push({
@@ -128,7 +128,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'king_of_diamonds.png'
+            img: 'PNG-cards-1.3/king_of_diamonds.png'
           })
         } else {
           cards.push({
@@ -136,7 +136,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: i,
-            img: i + '_of_diamonds.png'
+            img: 'PNG-cards-1.3/' + i + '_of_diamonds.png'
           })
         }
       }
@@ -151,7 +151,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 11,
-            img: 'ace_of_hearts.png'
+            img: 'PNG-cards-1.3/ace_of_hearts.png'
           })
         } else if (i === 11) {
           cards.push({
@@ -159,7 +159,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'jack_of_hearts.png'
+            img: 'PNG-cards-1.3/jack_of_hearts.png'
           })
         } else if (i === 12) {
           cards.push({
@@ -167,7 +167,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'queen_of_hearts.png'
+            img: 'PNG-cards-1.3/queen_of_hearts.png'
           })
         } else if (i === 13) {
           cards.push({
@@ -175,7 +175,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'king_of_hearts.png'
+            img: 'PNG-cards-1.3/king_of_hearts.png'
           })
         } else {
           cards.push({
@@ -183,7 +183,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: i,
-            img: i + '_of_hearts.png'
+            img: 'PNG-cards-1.3/' + i + '_of_hearts.png'
           })
         }
       }
@@ -198,7 +198,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 11,
-            img: 'ace_of_spades.png'
+            img: 'PNG-cards-1.3/ace_of_spades.png'
           })
         } else if (i === 11) {
           cards.push({
@@ -206,7 +206,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'jack_of_spades.png'
+            img: 'PNG-cards-1.3/jack_of_spades.png'
           })
         } else if (i === 12) {
           cards.push({
@@ -214,7 +214,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'queen_of_spades.png'
+            img: 'PNG-cards-1.3/queen_of_spades.png'
           })
         } else if (i === 13) {
           cards.push({
@@ -222,7 +222,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'king_of_spades.png'
+            img: 'PNG-cards-1.3/king_of_spades.png'
           })
         } else {
           cards.push({
@@ -230,33 +230,10 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: i,
-            img: i + '_of_spades.png'
+            img: 'PNG-cards-1.3/' + i + '_of_spades.png'
           })
         }
       }
-
-      // if (i === 14) {
-      //   cards.push({
-      //     card: i,
-      //     suit: j,
-      //     picked: false,
-      //     value: 11
-      //   })
-      // } else if (i > 9) {
-      //   cards.push({
-      //     card: i,
-      //     suit: j,
-      //     picked: false,
-      //     value: 10
-      //   })
-      // } else {
-      //   cards.push({
-      //     card: i,
-      //     suit: j,
-      //     picked: false,
-      //     value: i
-      //   })
-      // }
     }
   }
 }
@@ -348,16 +325,16 @@ const reset = () => {
   dealer = []
   userSum = 0
   dealerSum = 0
-  dealerCard0.innerText = ''
-  dealerCard1.innerText = ''
-  dealerCard2.innerText = ''
-  dealerCard3.innerText = ''
-  dealerCard4.innerText = ''
-  userCard0.innerText = ''
-  userCard1.innerText = ''
-  userCard2.innerText = ''
-  userCard3.innerText = ''
-  userCard4.innerText = ''
+  dealerCard0.src = ''
+  dealerCard1.src = ''
+  dealerCard2.src = ''
+  dealerCard3.src = ''
+  dealerCard4.src = ''
+  userCard0.src = ''
+  userCard1.src = ''
+  userCard2.src = ''
+  userCard3.src = ''
+  userCard4.src = ''
   sum()
 }
 //////
@@ -370,19 +347,19 @@ startBtn.addEventListener('click', () => {
 
   reset()
   user.push(dealCard())
-  userCard0.innerText = user[0].value
+  userCard0.src = user[0].img
   u0.append(userCard0)
 
   dealer.push(dealCard())
-  dealerCard0.innerText = dealer[0].value
+  dealerCard0.src = dealer[0].img
   d0.append(dealerCard0)
 
   user.push(dealCard())
-  userCard1.innerText = user[1].value
+  userCard1.src = user[1].img
   u1.append(userCard1)
 
   dealer.push(dealCard())
-  dealerCard1.innerText = dealer[1].value
+  dealerCard1.src = dealer[1].img
   d1.append(dealerCard1)
   sum()
   startBtn.style.display = 'none'
@@ -394,15 +371,15 @@ startBtn.addEventListener('click', () => {
 hitBtn.addEventListener('click', () => {
   if (user.length === 2) {
     user.push(dealCard())
-    userCard2.innerText = user[2].value
+    userCard2.src = user[2].img
     u2.append(userCard2)
   } else if (user.length === 3) {
     user.push(dealCard())
-    userCard3.innerText = user[3].value
+    userCard3.src = user[3].img
     u3.append(userCard3)
   } else if (user.length === 4) {
     user.push(dealCard())
-    userCard4.innerText = user[4].value
+    userCard4.src = user[4].img
     u4.append(userCard4)
   }
   dealerHit()

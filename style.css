@@ -20,11 +20,13 @@ header {
 }
 .card {
   background-color: black;
-  width: 75px;
-  height: 150px;
+  width: 80px;
+  height: 116px;
   border: solid white 2px;
 }
-
+img {
+  max-width: 80px;
+}
 button {
   margin-left: 50px;
   margin-right: 50px;

@@ -67,7 +67,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/jack_of_clubs.png'
+            img: 'PNG-cards-1.3/jack_of_clubs2.png'
           })
         } else if (i === 12) {
           cards.push({
@@ -75,7 +75,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/queen_of_clubs.png'
+            img: 'PNG-cards-1.3/queen_of_clubs2.png'
           })
         } else if (i === 13) {
           cards.push({
@@ -83,7 +83,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/king_of_clubs.png'
+            img: 'PNG-cards-1.3/king_of_clubs2.png'
           })
         } else {
           cards.push({
@@ -112,7 +112,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/jack_of_diamonds.png'
+            img: 'PNG-cards-1.3/jack_of_diamonds2.png'
           })
         } else if (i === 12) {
           cards.push({
@@ -120,7 +120,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/queen_of_diamonds.png'
+            img: 'PNG-cards-1.3/queen_of_diamonds2.png'
           })
         } else if (i === 13) {
           cards.push({
@@ -128,7 +128,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/king_of_diamonds.png'
+            img: 'PNG-cards-1.3/king_of_diamonds2.png'
           })
         } else {
           cards.push({
@@ -159,7 +159,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/jack_of_hearts.png'
+            img: 'PNG-cards-1.3/jack_of_hearts2.png'
           })
         } else if (i === 12) {
           cards.push({
@@ -167,7 +167,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/queen_of_hearts.png'
+            img: 'PNG-cards-1.3/queen_of_hearts2.png'
           })
         } else if (i === 13) {
           cards.push({
@@ -175,7 +175,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/king_of_hearts.png'
+            img: 'PNG-cards-1.3/king_of_hearts2.png'
           })
         } else {
           cards.push({
@@ -206,7 +206,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/jack_of_spades.png'
+            img: 'PNG-cards-1.3/jack_of_spades2.png'
           })
         } else if (i === 12) {
           cards.push({
@@ -214,7 +214,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/queen_of_spades.png'
+            img: 'PNG-cards-1.3/queen_of_spades2.png'
           })
         } else if (i === 13) {
           cards.push({
@@ -222,7 +222,7 @@ const makeDeck = () => {
             suit: j,
             picked: false,
             value: 10,
-            img: 'PNG-cards-1.3/king_of_spades.png'
+            img: 'PNG-cards-1.3/king_of_spades2.png'
           })
         } else {
           cards.push({
@@ -260,7 +260,7 @@ const sum = () => {
   for (let i = 0; i < user.length; i++) {
     userSum += user[i].value
   }
-  statLine.innerText = ' Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+  statLine.innerText = 'Your Sum: ' + userSum
   stats.append(statLine)
 }
 
@@ -270,15 +270,15 @@ const dealerHit = () => {
   if (dealerSum < 17) {
     if (dealer.length === 2) {
       dealer.push(dealCard())
-      dealerCard2.innerText = dealer[2].value
+      dealerCard2.src = 'PNG-cards-1.3/Peter River.png'
       d2.append(dealerCard2)
     } else if (dealer.length === 3) {
       dealer.push(dealCard())
-      dealerCard3.innerText = dealer[3].value
+      dealerCard3.src = 'PNG-cards-1.3/Emerald.png'
       d3.append(dealerCard3)
     } else if (dealer.length === 4) {
       dealer.push(dealCard())
-      dealerCard4.innerText = dealer[4].value
+      dealerCard4.src = 'PNG-cards-1.3/Sun Flower.png'
       d4.append(dealerCard4)
     }
   }
@@ -359,7 +359,7 @@ startBtn.addEventListener('click', () => {
   u1.append(userCard1)
 
   dealer.push(dealCard())
-  dealerCard1.src = dealer[1].img
+  dealerCard1.src = 'PNG-cards-1.3/Pomegranate.png'
   d1.append(dealerCard1)
   sum()
   startBtn.style.display = 'none'

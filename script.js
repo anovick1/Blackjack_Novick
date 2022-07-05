@@ -270,15 +270,15 @@ const dealerHit = () => {
   if (dealerSum < 17) {
     if (dealer.length === 2) {
       dealer.push(dealCard())
-      dealerCard2.src = 'PNG-cards-1.3/Peter River.png'
+      dealerCard2.src = dealer[1].img
       d2.append(dealerCard2)
     } else if (dealer.length === 3) {
       dealer.push(dealCard())
-      dealerCard3.src = 'PNG-cards-1.3/Emerald.png'
+      dealerCard3.src = dealer[2].img
       d3.append(dealerCard3)
     } else if (dealer.length === 4) {
       dealer.push(dealCard())
-      dealerCard4.src = 'PNG-cards-1.3/Sun Flower.png'
+      dealerCard4.src = dealer[3].img
       d4.append(dealerCard4)
     }
   }
@@ -291,26 +291,31 @@ const checkWinner = () => {
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
+    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
   } else if (dealerSum > 21) {
     winningText.innerText = 'DEALER BUSTED, YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
+    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
   } else if (dealerSum > userSum) {
     winningText.innerText = 'DEALER WINS!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
+    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
   } else if (dealerSum < userSum) {
     winningText.innerText = 'YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
+    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
   } else {
     winningText.innerText = 'TIE!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.style.display = 'inline-block'
+    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
   }
 }
 
@@ -382,7 +387,6 @@ hitBtn.addEventListener('click', () => {
     userCard4.src = user[4].img
     u4.append(userCard4)
   }
-  dealerHit()
   sum()
   if (dealerSum > 21 || userSum > 21) {
     checkWinner()
@@ -391,6 +395,7 @@ hitBtn.addEventListener('click', () => {
 
 /// stand simulates rest rest of game for computer
 standBtn.addEventListener('click', () => {
+  dealerCard1.src = dealer[1].img
   while (dealerSum < 17) {
     dealerHit()
   }

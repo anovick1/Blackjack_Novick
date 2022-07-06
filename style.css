@@ -17,6 +17,7 @@ header {
   grid-template-columns: repeat(5, 150px);
   grid-template-rows: repeat(2, 300px);
   justify-content: center;
+  /* background-color: green; */
 }
 .card {
   background-color: black;
@@ -33,12 +34,12 @@ img:before {
   top: 0;
   left: 0;
   z-index: 1;
-  animation: reveal 1s reverse forwards;
+  animation: reveal 0.5s reverse forwards;
 }
 img {
   max-width: 80px;
   transform-origin: top;
-  animation: reveal1 1s ease-in-out forwards;
+  animation: reveal1 0.5s ease-in-out forwards;
 }
 button {
   margin-left: 50px;
@@ -99,4 +100,12 @@ button:hover {
 
 .title {
   margin: 100px;
+}
+
+.gambling {
+  display: flex;
+  width: 750px;
+  justify-content: space-between;
+  font-size: 24px;
+  margin-bottom: 75px;
 }

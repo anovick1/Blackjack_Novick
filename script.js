@@ -45,7 +45,6 @@ let userCard3 = document.createElement('img')
 let userCard4 = document.createElement('img')
 
 let winningText = document.createElement('h1')
-buttons.append(winningText)
 
 /// make card objects
 // 0 = clubs
@@ -245,10 +244,10 @@ const makeDeck = () => {
 
 /// returns random card object that has not been used yet
 const dealCard = () => {
-  let index = Math.round(Math.random() * 52) - 1
+  let index = Math.floor(Math.random() * 52)
   let newCard = cards[index]
   while (newCard.picked == 'true') {
-    index = Math.round(Math.random() * 52) - 1
+    index = Math.floor(Math.random() * 52)
     newCard = cards[index]
   }
   cards[index].picked = true
@@ -305,27 +304,24 @@ const sum = () => {
 /// deals cards to dealer when their sum is < 17
 /// add more logic later
 const dealerHit = () => {
-  if (dealerSum < 17) {
-    if (dealer.length === 2) {
-      dealer.push(dealCard())
-      dealerCard2.src = dealer[1].img
-      d2.append(dealerCard2)
-    } else if (dealer.length === 3) {
-      dealer.push(dealCard())
-      dealerCard3.src = dealer[2].img
-      d3.append(dealerCard3)
-    } else if (dealer.length === 4) {
-      dealer.push(dealCard())
-      dealerCard4.src = dealer[3].img
-      d4.append(dealerCard4)
-    }
+  if (dealer.length === 2) {
+    dealer.push(dealCard())
+    dealerCard2.src = dealer[2].img
+    d2.append(dealerCard2)
+  } else if (dealer.length === 3) {
+    dealer.push(dealCard())
+    dealerCard3.src = dealer[3].img
+    d3.append(dealerCard3)
+  } else if (dealer.length === 4) {
+    dealer.push(dealCard())
+    dealerCard4.src = dealer[4].img
+    d4.append(dealerCard4)
   }
-  sum()
 }
 
 const checkWinner = () => {
   if (userSum > 21) {
-    winningText.innerText = 'YOU BUSTED!'
+    winningText.innerText = 'BUST! Dealer Wins'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.innerText = 'Play Again?'
@@ -333,13 +329,12 @@ const checkWinner = () => {
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
     flipCard()
   } else if (dealerSum > 21) {
-    winningText.innerText = 'DEALER BUSTED, YOU WIN!'
+    winningText.innerText = 'DEALER BUST, YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
-    flipCard()
   } else if (dealerSum > userSum) {
     winningText.innerText = 'DEALER WINS!'
     hitBtn.style.display = 'none'
@@ -347,7 +342,6 @@ const checkWinner = () => {
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
-    flipCard()
   } else if (dealerSum < userSum) {
     winningText.innerText = 'YOU WIN!'
     hitBtn.style.display = 'none'
@@ -355,7 +349,6 @@ const checkWinner = () => {
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
-    flipCard()
   } else {
     winningText.innerText = 'TIE!'
     hitBtn.style.display = 'none'
@@ -363,7 +356,6 @@ const checkWinner = () => {
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
-    flipCard()
   }
 }
 
@@ -390,36 +382,42 @@ const reset = () => {
   userCard3.src = ''
   userCard4.src = ''
   flip.src = ''
-  sum()
+  statLine.innerText = ''
+  startBtn.style.display = 'none'
 }
+
 //////
 ////// EVENT LISTENERS
 //////
 
 /// Start Button starts game and deals 2 cards to players
 startBtn.addEventListener('click', () => {
-  winningText.innerText = 'Hit or Stand?'
   reset()
   user.push(dealCard())
   userCard0.src = user[0].img
   u0.append(userCard0)
-
-  dealer.push(dealCard())
-  dealerCard0.src = dealer[0].img
-  d0.append(dealerCard0)
-
-  user.push(dealCard())
-  userCard1.src = user[1].img
-  u1.append(userCard1)
-
-  dealer.push(dealCard())
-  flip.src = dealer[1].img
-  dealerCard1.src = 'PNG-cards-1.3/Pomegranate.png'
-  d1.appendChild(dealerCard1)
-  sum()
-  startBtn.style.display = 'none'
-  buttons.append(hitBtn)
-  buttons.append(standBtn)
+  setTimeout(() => {
+    dealer.push(dealCard())
+    dealerCard0.src = dealer[0].img
+    d0.append(dealerCard0)
+    setTimeout(() => {
+      user.push(dealCard())
+      userCard1.src = user[1].img
+      u1.append(userCard1)
+      setTimeout(() => {
+        dealer.push(dealCard())
+        flip.src = dealer[1].img
+        dealerCard1.src = 'PNG-cards-1.3/Pomegranate.png'
+        d1.appendChild(dealerCard1)
+        setTimeout(() => {
+          buttons.append(winningText)
+          buttons.append(hitBtn)
+          buttons.append(standBtn)
+          sum()
+        }, 500)
+      }, 500)
+    }, 500)
+  }, 500)
 })
 
 /// flips dealers card
@@ -445,18 +443,26 @@ hitBtn.addEventListener('click', () => {
     u4.append(userCard4)
   }
   sum()
-  if (dealerSum > 21 || userSum > 21) {
-    checkWinner()
-  }
+  setTimeout(() => {
+    if (dealerSum > 21 || userSum > 21) {
+      flipCard()
+      checkWinner()
+    }
+  }, 500)
 })
 
 /// stand simulates rest rest of game for computer
 standBtn.addEventListener('click', () => {
   flipCard()
-  while (dealerSum < 17) {
-    dealerHit()
-  }
-  hitBtn.style.display = 'none'
-  standBtn.style.display = 'none'
-  checkWinner()
+  setTimeout(() => {
+    while (dealerSum < 17) {
+      dealerHit()
+      sum()
+    }
+    setTimeout(() => {
+      hitBtn.style.display = 'none'
+      standBtn.style.display = 'none'
+      checkWinner()
+    }, 500)
+  }, 500)
 })

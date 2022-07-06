@@ -45,10 +45,29 @@ button {
   margin-right: 50px;
   font-size: 25px;
   width: 200px;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0 17px 50px 0 white, 0 17px 50px 0 white;
 }
 
 .buttons {
   padding-bottom: 50px;
+}
+.home-btn {
+  background-color: white;
+  color: black;
+}
+.home-btn:hover {
+  background-color: black;
+  color: white;
+  box-shadow: 0 17px 50px 0 black, 0 17px 50px 0 black;
 }
 
 @keyframes reveal1 {

@@ -12,13 +12,14 @@ let buttons = document.querySelector('.buttons')
 let stats = document.querySelector('.stats')
 let statLine = document.createElement('h1')
 let startBtn = document.createElement('button')
+startBtn.className = 'gameBtn'
 let hitBtn = document.createElement('button')
+hitBtn.className = 'gameBtn'
 let standBtn = document.createElement('button')
-let playAgain = document.createElement('button')
+standBtn.className = 'gameBtn'
 startBtn.innerText = 'Deal Cards'
 hitBtn.innerText = 'Hit'
 standBtn.innerText = 'Stand'
-playAgain.innerText = 'Play Again?'
 buttons.append(startBtn)
 let flip = document.createElement('img')
 
@@ -327,6 +328,7 @@ const checkWinner = () => {
     winningText.innerText = 'YOU BUSTED!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
+    startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
     flipCard()
@@ -334,6 +336,7 @@ const checkWinner = () => {
     winningText.innerText = 'DEALER BUSTED, YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
+    startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
     flipCard()
@@ -341,6 +344,7 @@ const checkWinner = () => {
     winningText.innerText = 'DEALER WINS!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
+    startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
     flipCard()
@@ -348,6 +352,7 @@ const checkWinner = () => {
     winningText.innerText = 'YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
+    startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
     flipCard()
@@ -355,6 +360,7 @@ const checkWinner = () => {
     winningText.innerText = 'TIE!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
+    startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
     flipCard()

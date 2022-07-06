@@ -59,8 +59,8 @@ Have Fun!
 
 ##### [Trello Link](https://trello.com/b/CD2kXIiL/project-1)
 
-<!-- ##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
+##### [Surge Deployment](https://anovickblackjack.surge.sh/)
 
-##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) -->
+<!-- ##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) -->
 
 ---

@@ -1,9 +1,12 @@
 let cards = []
 let dealer = []
 let user = []
+let sums = []
 let userSum = 0
 let dealerSum = 0
 let count = 0
+let userAce = 0
+let dealerAce = 0
 
 let buttons = document.querySelector('.buttons')
 let stats = document.querySelector('.stats')
@@ -12,7 +15,7 @@ let startBtn = document.createElement('button')
 let hitBtn = document.createElement('button')
 let standBtn = document.createElement('button')
 let playAgain = document.createElement('button')
-startBtn.innerText = 'Play Game'
+startBtn.innerText = 'Deal Cards'
 hitBtn.innerText = 'Hit'
 standBtn.innerText = 'Stand'
 playAgain.innerText = 'Play Again?'
@@ -255,11 +258,44 @@ const dealCard = () => {
 const sum = () => {
   dealerSum = 0
   userSum = 0
+  dealerAce = 0
+  userAce = 0
+
+  /// sum of dealer
   for (let i = 0; i < dealer.length; i++) {
     dealerSum += dealer[i].value
+    if (dealer[i].value == 11) {
+      dealerAce++
+    }
   }
+  //// aces 11 or 1
+  if (dealerAce >= 3 && dealerSum > 21) {
+    dealerSum = dealerSum - 10
+  }
+  if (dealerAce >= 2 && dealerSum > 21) {
+    dealerSum = dealerSum - 10
+  }
+  if (dealerAce >= 1 && dealerSum > 21) {
+    dealerSum = dealerSum - 10
+  }
+
+  //// sum of user
   for (let i = 0; i < user.length; i++) {
     userSum += user[i].value
+    if (user[i].value == 11) {
+      userAce++
+    }
+  }
+  //// aces 11 or 1
+
+  if (userAce >= 3 && userSum > 21) {
+    userSum = userSum - 10
+  }
+  if (userAce >= 2 && userSum > 21) {
+    userSum = userSum - 10
+  }
+  if (userAce >= 1 && userSum > 21) {
+    userSum = userSum - 10
   }
   statLine.innerText = 'Your Sum: ' + userSum
   stats.append(statLine)

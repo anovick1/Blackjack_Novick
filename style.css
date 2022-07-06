@@ -15,7 +15,7 @@ header {
 .board {
   display: grid;
   grid-template-columns: repeat(5, 150px);
-  grid-template-rows: repeat(2, 300px);
+  grid-template-rows: repeat(2, 200px);
   justify-content: center;
   /* background-color: green; */
 }
@@ -60,6 +60,7 @@ button:hover {
 
 .buttons {
   padding-bottom: 50px;
+  height: 100px;
 }
 .home-btn {
   background-color: white;
@@ -109,3 +110,13 @@ button:hover {
   font-size: 24px;
   margin-bottom: 75px;
 }
+.stats {
+  display: flex;
+  justify-content: space-between;
+  width: 750px;
+  align-items: flex-end;
+}
+
+/* #dSum, #uSum{
+  a
+} */

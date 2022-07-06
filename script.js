@@ -10,7 +10,15 @@ let dealerAce = 0
 
 let buttons = document.querySelector('.buttons')
 let stats = document.querySelector('.stats')
-let statLine = document.createElement('h1')
+let dSum = document.querySelector('#dSum')
+let uSum = document.querySelector('#uSum')
+
+let userStat = document.createElement('h1')
+let dealerStat = document.createElement('h1')
+
+dSum.append(dealerStat)
+uSum.append(userStat)
+
 let startBtn = document.createElement('button')
 startBtn.className = 'gameBtn'
 let hitBtn = document.createElement('button')
@@ -297,8 +305,7 @@ const sum = () => {
   if (userAce >= 1 && userSum > 21) {
     userSum = userSum - 10
   }
-  statLine.innerText = 'Your Sum: ' + userSum
-  stats.append(statLine)
+  userStat.innerText = 'Your Sum: ' + userSum
 }
 
 /// deals cards to dealer when their sum is < 17
@@ -317,6 +324,7 @@ const dealerHit = () => {
     dealerCard4.src = dealer[4].img
     d4.append(dealerCard4)
   }
+  sum()
 }
 
 const checkWinner = () => {
@@ -326,36 +334,43 @@ const checkWinner = () => {
     standBtn.style.display = 'none'
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
-    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
-    flipCard()
+    dealerStat.innerText = 'Dealer Sum: ' + dealerSum
+    userStat.innerText = '\n\nYour Sum: ' + userSum
   } else if (dealerSum > 21) {
     winningText.innerText = 'DEALER BUST, YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
-    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    dealerStat.innerText = 'Dealer Sum: ' + dealerSum
+    userStat.innerText = '\n\nYour Sum: ' + userSum
   } else if (dealerSum > userSum) {
     winningText.innerText = 'DEALER WINS!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
-    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    // statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    dealerStat.innerText = 'Dealer Sum: ' + dealerSum
+    userStat.innerText = '\n\nYour Sum: ' + userSum
   } else if (dealerSum < userSum) {
     winningText.innerText = 'YOU WIN!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
-    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    // statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    dealerStat.innerText = 'Dealer Sum: ' + dealerSum
+    userStat.innerText = '\n\nYour Sum: ' + userSum
   } else {
     winningText.innerText = 'TIE!'
     hitBtn.style.display = 'none'
     standBtn.style.display = 'none'
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
-    statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    // statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
+    dealerStat.innerText = 'Dealer Sum: ' + dealerSum
+    userStat.innerText = '\n\nYour Sum: ' + userSum
   }
 }
 
@@ -365,7 +380,7 @@ const reset = () => {
   makeDeck()
   hitBtn.style.display = 'inline-block'
   standBtn.style.display = 'inline-block'
-  winningText.innerText = 'Hit or stand?'
+  // winningText.innerText = 'Hit or stand?'
   user = []
   dealer = []
   console.log(dealer)
@@ -382,7 +397,8 @@ const reset = () => {
   userCard3.src = ''
   userCard4.src = ''
   flip.src = ''
-  statLine.innerText = ''
+  dealerStat.innerText = ''
+  userStat.innerText = ''
   startBtn.style.display = 'none'
 }
 
@@ -455,14 +471,25 @@ hitBtn.addEventListener('click', () => {
 standBtn.addEventListener('click', () => {
   flipCard()
   setTimeout(() => {
-    while (dealerSum < 17) {
-      dealerHit()
-      sum()
-    }
     setTimeout(() => {
-      hitBtn.style.display = 'none'
-      standBtn.style.display = 'none'
-      checkWinner()
+      if (dealerSum < 17) {
+        dealerHit()
+      }
+      setTimeout(() => {
+        if (dealerSum < 17) {
+          dealerHit()
+        }
+        setTimeout(() => {
+          if (dealerSum < 17) {
+            dealerHit()
+          }
+          setTimeout(() => {
+            hitBtn.style.display = 'none'
+            standBtn.style.display = 'none'
+            checkWinner()
+          }, 250)
+        }, 250)
+      }, 500)
     }, 500)
   }, 500)
 })

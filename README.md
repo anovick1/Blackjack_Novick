@@ -63,7 +63,7 @@ Have Fun!
 
 ##### [Trello Link](https://trello.com/b/CD2kXIiL/project-1)
 
-##### [Surge Deployment](https://anovickblackjack.surge.sh/)
+##### [Surge Deployment](https://averynovickblackjack.surge.sh/)
 
 <!-- ##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) -->
 

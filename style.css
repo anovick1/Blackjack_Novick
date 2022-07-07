@@ -106,7 +106,7 @@ button:hover {
 
 .gambling {
   display: flex;
-  width: 45vw;
+  width: 50vw;
   justify-content: space-between;
   font-size: 24px;
   margin-top: 5vh;
@@ -122,3 +122,18 @@ button:hover {
 /* #dSum, #uSum{
   a
 } */
+
+#submit {
+  font-size: 17px;
+  width: 5vw;
+  margin: 0;
+}
+
+#bet {
+  height: 2vh;
+}
+input {
+  font-size: 20px;
+  width: 5vw;
+  text-align: center;
+}

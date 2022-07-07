@@ -1,3 +1,7 @@
+///
+/// Global Variables
+///
+
 let cards = []
 let dealer = []
 let user = []
@@ -376,38 +380,45 @@ const dealerHit = () => {
   }
 }
 
+/// helper for display win ha ha
+const winButtons = () => {
+  if (currentMoney <= 0) {
+    winningText.innerText =
+      'Dealer wins but you are out of Money! Leave and get more money.'
+    rip.style.display = 'inline-block'
+  } else {
+    resetBtn.style.display = 'inline-block'
+    rip.style.display = 'inline-block'
+  }
+}
+
 /// helper for check winner
 const displayWin = () => {
   hitBtn.style.display = 'none'
   standBtn.style.display = 'none'
   if (outcome == 0) {
     setTimeout(() => {
-      currentMoney += input.value
+      currentMoney += 1 * input.value
       money.innerHTML = 'You have: $' + currentMoney
-    }, 2000)
+      winButtons()
+    }, 1500)
     money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value
   }
   if (outcome == 1) {
     setTimeout(() => {
-      currentMoney -= input.value
+      currentMoney -= 1 * input.value
       money.innerHTML = 'You have: $' + currentMoney
-    }, 2000)
+      winButtons()
+    }, 1500)
     money.innerHTML = 'You have: $' + currentMoney + '  -  $' + input.value
   }
   if (outcome == 2) {
     setTimeout(() => {
       currentMoney += 2 * input.value
       money.innerHTML = 'You have: $' + currentMoney
-    }, 2000)
-
+      winButtons()
+    }, 1500)
     money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value * 2
-  }
-  if (currentMoney <= 0) {
-    winningText.innerText =
-      'Dealer Wins but you are out of Money! Leave and get more money.'
-    rip.style.display = 'inline-block'
-  } else {
-    resetBtn.style.display = 'inline-block'
   }
 }
 
@@ -493,6 +504,7 @@ const reset = () => {
   label.innerText = 'Your bet: $'
   lock = false
   first = false
+  rip.style.display = 'none'
 }
 
 const lockBet = () => {
@@ -636,6 +648,7 @@ resetBtn.addEventListener('click', () => {
   reset()
 })
 
+///leaves game
 rip.addEventListener('click', () => {
   window.location.href = 'index.html'
 })

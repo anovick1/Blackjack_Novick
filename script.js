@@ -9,6 +9,9 @@ let userAce = 0
 let dealerAce = 0
 let currentMoney = 100
 let lock = false
+let outcome = -1
+let first = true
+let disp = 0
 
 //// general
 let buttons = document.querySelector('.buttons')
@@ -373,35 +376,58 @@ const displayWin = () => {
   hitBtn.style.display = 'none'
   standBtn.style.display = 'none'
   resetBtn.style.display = 'inline-block'
-  money.innerText = 'You have: $' + currentMoney
+  if (outcome == 0) {
+    setTimeout(() => {
+      currentMoney += input.value
+      money.innerHTML = 'You have: $' + currentMoney
+    }, 2000)
+    money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value
+  }
+  if (outcome == 1) {
+    setTimeout(() => {
+      currentMoney -= input.value
+      money.innerHTML = 'You have: $' + currentMoney
+    }, 2000)
+    money.innerHTML = 'You have: $' + currentMoney + '  -  $' + input.value
+  }
+  if (outcome == 2) {
+    setTimeout(() => {
+      currentMoney += 2 * input.value
+      money.innerHTML = 'You have: $' + currentMoney
+    }, 2000)
+
+    money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value * 2
+  }
+  // money.innerText = 'You have: $' + currentMoney
 }
 
 /// checks winning conditiosn
 const checkWinner = () => {
   if (userSum > 21) {
     winningText.innerText = 'Dealer Wins'
-    currentMoney -= input.value
+    outcome = 1
     displayWin()
   } else if (dealerSum > 21) {
     winningText.innerText = 'YOU WIN!'
-    currentMoney += 2 * input.value
+    outcome = 2
     displayWin()
   } else if (dealerSum > userSum) {
     winningText.innerText = 'Dealer Wins'
-    currentMoney -= input.value
+    outcome = 1
     displayWin()
   } else if (dealerSum < userSum) {
     winningText.innerText = 'YOU WIN!'
     if (userSum == 21) {
       winningText.innerText = 'BLACKJACK!!!!! YOU WIN'
     }
-    currentMoney -= input.value
+    outcome = 2
     displayWin()
   } else {
     winningText.innerText = 'TIE!'
     if (userSum == 21) {
       winningText.innerText = 'BLACKJACK...  but Tie'
     }
+    outcome = 0
     displayWin()
   }
 }
@@ -410,10 +436,7 @@ const checkWinner = () => {
 const reset = () => {
   cards = []
   makeDeck()
-  // hitBtn.style.display = 'inline-block'
-  // standBtn.style.display = 'inline-block'
   resetBtn.style.display = 'none'
-
   user = []
   dealer = []
   console.log(dealer)
@@ -430,6 +453,7 @@ const reset = () => {
   userCard3.src = ''
   userCard4.src = ''
   flip.src = ''
+  outcome = -1
   dealerStat.innerText = ''
   userStat.innerText = ''
   winningText.innerText = ''
@@ -458,6 +482,7 @@ const reset = () => {
   input.style.display = 'inline-block'
   label.innerText = 'Your bet: $'
   lock = false
+  first = false
 }
 
 const lockBet = () => {
@@ -465,7 +490,11 @@ const lockBet = () => {
   input.style.display = 'none'
   currentMoney -= input.value
   label.innerText = 'Your bet: $' + input.value
-  money.innerText = 'You have: $' + currentMoney
+  money.innerHTML = money.innerHTML + ' - $' + input.value
+  setTimeout(() => {
+    money.innerHTML = 'You have: $' + currentMoney
+  }, 2000)
+  // money.innerText = 'You have: $' + currentMoney
   lock = true
 }
 
@@ -475,8 +504,10 @@ const lockBet = () => {
 
 /// Start Button starts game and deals 2 cards to players
 dealBtn.addEventListener('click', () => {
+  if (first) {
+    makeDeck()
+  }
   dealBtn.style.display = 'none'
-  makeDeck()
   if (lock == false) {
     lockBet()
   }

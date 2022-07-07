@@ -15,7 +15,7 @@ header {
 .board {
   display: grid;
   grid-template-columns: repeat(5, 10vw);
-  grid-template-rows: repeat(2, 15vh);
+  grid-template-rows: repeat(2, 16vh);
   justify-items: center;
   align-items: center;
   border: 2px solid white;
@@ -24,7 +24,9 @@ header {
 .card {
   background-color: black;
   width: 5vw;
-  height: 10vh;
+  height: 14vh;
+  max-width: 5vw;
+  max-height: 14vh;
   border: solid white 2px;
   transform-origin: left;
   animation: reveal 0.5s ease-in-out forwards;
@@ -40,6 +42,7 @@ img:before {
 }
 img {
   max-width: 5vw;
+  max-height: 14vh;
   transform-origin: top;
   animation: reveal1 0.5s ease-in-out forwards;
 }

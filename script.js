@@ -36,7 +36,7 @@ let money = document.querySelector('#money')
 let gambling = document.querySelector('.gambling')
 money.innerText = money.innerText + ' $' + currentMoney
 
-//// hit stand buttons, could'vs done in html and CSS but did it here
+//// buttons, could'vs done in html and CSS but did it here
 let dealBtn = document.createElement('button')
 dealBtn.className = 'gameBtn'
 let hitBtn = document.createElement('button')
@@ -57,6 +57,11 @@ buttons.append(standBtn)
 resetBtn.style.display = 'none'
 standBtn.style.display = 'none'
 hitBtn.style.display = 'none'
+let rip = document.createElement('button')
+rip.className = 'gameBtn'
+rip.innerHTML = 'Leave'
+rip.style.display = 'none'
+buttons.append(rip)
 
 let flip = document.createElement('img')
 
@@ -375,7 +380,6 @@ const dealerHit = () => {
 const displayWin = () => {
   hitBtn.style.display = 'none'
   standBtn.style.display = 'none'
-  resetBtn.style.display = 'inline-block'
   if (outcome == 0) {
     setTimeout(() => {
       currentMoney += input.value
@@ -398,7 +402,13 @@ const displayWin = () => {
 
     money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value * 2
   }
-  // money.innerText = 'You have: $' + currentMoney
+  if (currentMoney <= 0) {
+    winningText.innerText =
+      'Dealer Wins but you are out of Money! Leave and get more money.'
+    rip.style.display = 'inline-block'
+  } else {
+    resetBtn.style.display = 'inline-block'
+  }
 }
 
 /// checks winning conditiosn
@@ -486,16 +496,21 @@ const reset = () => {
 }
 
 const lockBet = () => {
-  submit.style.display = 'none'
-  input.style.display = 'none'
-  currentMoney -= input.value
-  label.innerText = 'Your bet: $' + input.value
-  money.innerHTML = money.innerHTML + ' - $' + input.value
-  setTimeout(() => {
-    money.innerHTML = 'You have: $' + currentMoney
-  }, 2000)
-  // money.innerText = 'You have: $' + currentMoney
-  lock = true
+  if (input.value > currentMoney) {
+    winningText.innerText = 'Place a lower bet'
+  } else {
+    winningText.innerText = ''
+    submit.style.display = 'none'
+    input.style.display = 'none'
+    currentMoney -= input.value
+    label.innerText = 'Your bet: $' + input.value
+    money.innerHTML = money.innerHTML + ' - $' + input.value
+    setTimeout(() => {
+      money.innerHTML = 'You have: $' + currentMoney
+    }, 2000)
+    // money.innerText = 'You have: $' + currentMoney
+    lock = true
+  }
 }
 
 //////
@@ -619,4 +634,8 @@ submit.addEventListener('click', () => {
 
 resetBtn.addEventListener('click', () => {
   reset()
+})
+
+rip.addEventListener('click', () => {
+  window.location.href = 'index.html'
 })

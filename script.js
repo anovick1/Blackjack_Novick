@@ -1,7 +1,6 @@
 ///
 /// Global Variables
 ///
-
 let cards = []
 let dealer = []
 let user = []
@@ -17,12 +16,13 @@ let outcome = -1
 let first = true
 let disp = 0
 
-//// general
+//// general selectors
 let buttons = document.querySelector('.buttons')
 let stats = document.querySelector('.stats')
 let dSum = document.querySelector('#dSum')
 let uSum = document.querySelector('#uSum')
 let win = document.querySelector('.winner')
+let home = document.querySelector('.home-btn')
 
 /// sums
 let userStat = document.createElement('h1')
@@ -92,6 +92,16 @@ let userCard1 = document.createElement('img')
 let userCard2 = document.createElement('img')
 let userCard3 = document.createElement('img')
 let userCard4 = document.createElement('img')
+
+//// audio
+let cardSound = new Audio('sound_effects/cardDeal.mp4')
+let poker = new Audio('sound_effects/pokerChip.m4a')
+let backgroundMusic = new Audio('sound_effects/SummerSamba.mp4')
+backgroundMusic.loop = true
+let click = new Audio('sound_effects/click.mp4')
+let yay = new Audio('sound_effects/win.mp4')
+let lose = new Audio('sound_effects/lose.mp4')
+let jack = new Audio('sound_effects/jackpot.mp4')
 
 /// make card objects
 // 0 = clubs
@@ -345,6 +355,7 @@ const sum = () => {
     userSum = userSum - 10
   }
   if (userSum == 21) {
+    jack.play()
     winningText.innerText = 'BLACKJACK!!!!!!!'
   }
   userStat.innerText = 'Your Sum: ' + userSum
@@ -356,6 +367,7 @@ const dealerHit = () => {
   if (dealer.length === 2) {
     dealer.push(dealCard())
     dealerCard2.src = dealer[2].img
+    cardSound.play()
     d2.append(dealerCard2)
     d2.style.backgroundColor = 'transparent'
     d2.style.border = '0px'
@@ -364,6 +376,7 @@ const dealerHit = () => {
   } else if (dealer.length === 3) {
     dealer.push(dealCard())
     dealerCard3.src = dealer[3].img
+    cardSound.play()
     d3.append(dealerCard3)
     d3.style.backgroundColor = 'transparent'
     d3.style.border = '0px'
@@ -372,6 +385,7 @@ const dealerHit = () => {
   } else if (dealer.length === 4) {
     dealer.push(dealCard())
     dealerCard4.src = dealer[4].img
+    cardSound.play()
     d4.append(dealerCard4)
     d4.style.backgroundColor = 'transparent'
     d4.style.border = '0px'
@@ -422,21 +436,25 @@ const displayWin = () => {
   }
 }
 
-/// checks winning conditiosn
+/// checks winning condition
 const checkWinner = () => {
   if (userSum > 21) {
     winningText.innerText = 'Dealer Wins'
     outcome = 1
+    lose.play()
     displayWin()
   } else if (dealerSum > 21) {
+    yay.play()
     winningText.innerText = 'YOU WIN!'
     outcome = 2
     displayWin()
   } else if (dealerSum > userSum) {
     winningText.innerText = 'Dealer Wins'
+    lose.play()
     outcome = 1
     displayWin()
   } else if (dealerSum < userSum) {
+    yay.play()
     winningText.innerText = 'YOU WIN!'
     if (userSum == 21) {
       winningText.innerText = 'BLACKJACK!!!!! YOU WIN'
@@ -511,6 +529,7 @@ const lockBet = () => {
   if (input.value > currentMoney) {
     winningText.innerText = 'Place a lower bet'
   } else {
+    poker.play()
     winningText.innerText = ''
     submit.style.display = 'none'
     input.style.display = 'none'
@@ -529,7 +548,7 @@ const lockBet = () => {
 ////// EVENT LISTENERS
 //////
 
-/// Start Button starts game and deals 2 cards to players
+/// Deal Button starts game and deals 2 cards to players
 dealBtn.addEventListener('click', () => {
   if (first) {
     makeDeck()
@@ -540,18 +559,21 @@ dealBtn.addEventListener('click', () => {
   }
   user.push(dealCard())
   userCard0.src = user[0].img
+  cardSound.play()
   u0.append(userCard0)
   u0.style.backgroundColor = 'transparent'
   u0.style.border = '0px'
   setTimeout(() => {
     dealer.push(dealCard())
     dealerCard0.src = dealer[0].img
+    cardSound.play()
     d0.append(dealerCard0)
     d0.style.backgroundColor = 'transparent'
     d0.style.border = '0px'
     setTimeout(() => {
       user.push(dealCard())
       userCard1.src = user[1].img
+      cardSound.play()
       u1.append(userCard1)
       u1.style.backgroundColor = 'transparent'
       u1.style.border = '0px'
@@ -559,6 +581,7 @@ dealBtn.addEventListener('click', () => {
         dealer.push(dealCard())
         flip.src = dealer[1].img
         dealerCard1.src = 'PNG-cards-1.3/Pomegranate.png'
+        cardSound.play()
         d1.appendChild(dealerCard1)
         d1.style.backgroundColor = 'transparent'
         d1.style.border = '0px'
@@ -576,6 +599,7 @@ dealBtn.addEventListener('click', () => {
 
 /// flips dealers card
 const flipCard = () => {
+  cardSound.play()
   d1.removeChild(dealerCard1)
   dealerCard1.src = flip.src
   d1.append(dealerCard1)
@@ -588,18 +612,21 @@ hitBtn.addEventListener('click', () => {
   if (user.length === 2) {
     user.push(dealCard())
     userCard2.src = user[2].img
+    cardSound.play()
     u2.append(userCard2)
     u2.style.backgroundColor = 'transparent'
     u2.style.border = '0px'
   } else if (user.length === 3) {
     user.push(dealCard())
     userCard3.src = user[3].img
+    cardSound.play()
     u3.append(userCard3)
     u3.style.backgroundColor = 'transparent'
     u3.style.border = '0px'
   } else if (user.length === 4) {
     user.push(dealCard())
     userCard4.src = user[4].img
+    cardSound.play()
     u4.append(userCard4)
     u4.style.backgroundColor = 'transparent'
     u4.style.border = '0px'
@@ -645,10 +672,12 @@ submit.addEventListener('click', () => {
 })
 
 resetBtn.addEventListener('click', () => {
+  click.play()
   reset()
 })
 
 ///leaves game
 rip.addEventListener('click', () => {
+  click.play()
   window.location.href = 'index.html'
 })

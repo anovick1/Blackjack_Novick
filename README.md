@@ -1,6 +1,6 @@
 # Blackjack
 
-## Date: 7/1/2022
+## Date: 7/7/2022
 
 ### By: Avery Novick
 
@@ -32,26 +32,30 @@ Have Fun!
 
 ### **Screenshots**
 
+##### Home Screen
+
+![Image](images/start.png)
+
 ##### Start Screen
 
-![Image](start.png)
+![Image](images/start2.png)
 
 ##### Playing Screen
 
-![Image](playing.png)
+![Image](images/playing.png)
 
 ##### Final Screen
 
-![Image](winner.png)
+![Image](images/winner.png)
 
 ---
 
 ### **Task Lists**
 
-- [ ] Card images + dealing animations
-- [ ] Gambling
+- [ ] Enhanced UI
+- [ ] Roulette mini-game for the casino
 - [x] Simple working JS
-- [x] Simple UI
+- [x] Solid UI
 
 ---
 

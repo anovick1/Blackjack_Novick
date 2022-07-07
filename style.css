@@ -14,19 +14,20 @@ header {
 }
 .board {
   display: grid;
-  grid-template-columns: repeat(5, 150px);
-  grid-template-rows: repeat(2, 200px);
-  justify-content: center;
+  grid-template-columns: repeat(5, 10vw);
+  grid-template-rows: repeat(2, 15vh);
+  justify-items: center;
+  align-items: center;
   /* background-color: green; */
 }
 .card {
   background-color: black;
-  width: 80px;
-  height: 116px;
+  width: 5vw;
+  height: 10vh;
   border: solid white 2px;
-  /* transform: scaleX(0); */
   transform-origin: left;
   animation: reveal 0.5s ease-in-out forwards;
+  border-radius: 8px;
 }
 img:before {
   content: '';
@@ -37,19 +38,18 @@ img:before {
   animation: reveal 0.5s reverse forwards;
 }
 img {
-  max-width: 80px;
+  max-width: 5vw;
   transform-origin: top;
   animation: reveal1 0.5s ease-in-out forwards;
 }
 button {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 3vw;
+  margin-right: 3vw;
   font-size: 25px;
-  width: 200px;
+  width: 15vw;
   border-radius: 8px;
   background-color: black;
   color: white;
-  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 button:hover {
@@ -58,9 +58,14 @@ button:hover {
   box-shadow: 0 17px 50px 0 white, 0 17px 50px 0 white;
 }
 
-.buttons {
+/* .buttons {
   padding-bottom: 50px;
   height: 100px;
+} */
+
+.winner {
+  padding-bottom: 50px;
+  font-size: 30px;
 }
 .home-btn {
   background-color: white;
@@ -105,16 +110,17 @@ button:hover {
 
 .gambling {
   display: flex;
-  width: 750px;
+  width: 45vw;
   justify-content: space-between;
   font-size: 24px;
-  margin-bottom: 75px;
+  margin: 1vh;
 }
 .stats {
   display: flex;
   justify-content: space-between;
-  width: 750px;
+  width: 45vw;
   align-items: flex-end;
+  margin: 3vh;
 }
 
 /* #dSum, #uSum{

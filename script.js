@@ -12,9 +12,11 @@ let buttons = document.querySelector('.buttons')
 let stats = document.querySelector('.stats')
 let dSum = document.querySelector('#dSum')
 let uSum = document.querySelector('#uSum')
+let win = document.querySelector('.winner')
 
 let userStat = document.createElement('h1')
 let dealerStat = document.createElement('h1')
+let winningText = document.createElement('h1')
 
 dSum.append(dealerStat)
 uSum.append(userStat)
@@ -28,6 +30,7 @@ standBtn.className = 'gameBtn'
 startBtn.innerText = 'Deal Cards'
 hitBtn.innerText = 'Hit'
 standBtn.innerText = 'Stand'
+win.append(winningText)
 buttons.append(startBtn)
 let flip = document.createElement('img')
 
@@ -51,8 +54,6 @@ let userCard1 = document.createElement('img')
 let userCard2 = document.createElement('img')
 let userCard3 = document.createElement('img')
 let userCard4 = document.createElement('img')
-
-let winningText = document.createElement('h1')
 
 /// make card objects
 // 0 = clubs
@@ -315,16 +316,24 @@ const dealerHit = () => {
     dealer.push(dealCard())
     dealerCard2.src = dealer[2].img
     d2.append(dealerCard2)
+    d2.style.backgroundColor = 'transparent'
+    d2.style.border = '0px'
+    sum()
   } else if (dealer.length === 3) {
     dealer.push(dealCard())
     dealerCard3.src = dealer[3].img
     d3.append(dealerCard3)
+    d3.style.backgroundColor = 'transparent'
+    d3.style.border = '0px'
+    sum()
   } else if (dealer.length === 4) {
     dealer.push(dealCard())
     dealerCard4.src = dealer[4].img
     d4.append(dealerCard4)
+    d4.style.backgroundColor = 'transparent'
+    d4.style.border = '0px'
+    sum()
   }
-  sum()
 }
 
 const checkWinner = () => {
@@ -335,7 +344,7 @@ const checkWinner = () => {
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     dealerStat.innerText = 'Dealer Sum: ' + dealerSum
-    userStat.innerText = '\n\nYour Sum: ' + userSum
+    userStat.innerText = 'Your Sum: ' + userSum
   } else if (dealerSum > 21) {
     winningText.innerText = 'DEALER BUST, YOU WIN!'
     hitBtn.style.display = 'none'
@@ -343,7 +352,7 @@ const checkWinner = () => {
     startBtn.innerText = 'Play Again?'
     startBtn.style.display = 'inline-block'
     dealerStat.innerText = 'Dealer Sum: ' + dealerSum
-    userStat.innerText = '\n\nYour Sum: ' + userSum
+    userStat.innerText = 'Your Sum: ' + userSum
   } else if (dealerSum > userSum) {
     winningText.innerText = 'DEALER WINS!'
     hitBtn.style.display = 'none'
@@ -352,7 +361,7 @@ const checkWinner = () => {
     startBtn.style.display = 'inline-block'
     // statLine.innerText = 'Dealer Sum: ' + dealerSum + '\n\nYour Sum: ' + userSum
     dealerStat.innerText = 'Dealer Sum: ' + dealerSum
-    userStat.innerText = '\n\nYour Sum: ' + userSum
+    userStat.innerText = 'Your Sum: ' + userSum
   } else if (dealerSum < userSum) {
     winningText.innerText = 'YOU WIN!'
     hitBtn.style.display = 'none'
@@ -380,7 +389,6 @@ const reset = () => {
   makeDeck()
   hitBtn.style.display = 'inline-block'
   standBtn.style.display = 'inline-block'
-  // winningText.innerText = 'Hit or stand?'
   user = []
   dealer = []
   console.log(dealer)
@@ -399,7 +407,28 @@ const reset = () => {
   flip.src = ''
   dealerStat.innerText = ''
   userStat.innerText = ''
+  winningText.innerText = ''
   startBtn.style.display = 'none'
+  u0.style.backgroundColor = 'black'
+  u0.style.border = 'solid white 2px'
+  u1.style.backgroundColor = 'black'
+  u1.style.border = 'solid white 2px'
+  u2.style.backgroundColor = 'black'
+  u2.style.border = 'solid white 2px'
+  u3.style.backgroundColor = 'black'
+  u3.style.border = 'solid white 2px'
+  u4.style.backgroundColor = 'black'
+  u4.style.border = 'solid white 2px'
+  d0.style.backgroundColor = 'black'
+  d0.style.border = 'solid white 2px'
+  d1.style.backgroundColor = 'black'
+  d1.style.border = 'solid white 2px'
+  d2.style.backgroundColor = 'black'
+  d2.style.border = 'solid white 2px'
+  d3.style.backgroundColor = 'black'
+  d3.style.border = 'solid white 2px'
+  d4.style.backgroundColor = 'black'
+  d4.style.border = 'solid white 2px'
 }
 
 //////
@@ -412,21 +441,29 @@ startBtn.addEventListener('click', () => {
   user.push(dealCard())
   userCard0.src = user[0].img
   u0.append(userCard0)
+  u0.style.backgroundColor = 'transparent'
+  u0.style.border = '0px'
   setTimeout(() => {
     dealer.push(dealCard())
     dealerCard0.src = dealer[0].img
     d0.append(dealerCard0)
+    d0.style.backgroundColor = 'transparent'
+    d0.style.border = '0px'
     setTimeout(() => {
       user.push(dealCard())
       userCard1.src = user[1].img
       u1.append(userCard1)
+      u1.style.backgroundColor = 'transparent'
+      u1.style.border = '0px'
       setTimeout(() => {
         dealer.push(dealCard())
         flip.src = dealer[1].img
         dealerCard1.src = 'PNG-cards-1.3/Pomegranate.png'
         d1.appendChild(dealerCard1)
+        d1.style.backgroundColor = 'transparent'
+        d1.style.border = '0px'
         setTimeout(() => {
-          buttons.append(winningText)
+          // win.append(winningText)
           buttons.append(hitBtn)
           buttons.append(standBtn)
           sum()
@@ -441,6 +478,7 @@ const flipCard = () => {
   d1.removeChild(dealerCard1)
   dealerCard1.src = flip.src
   d1.append(dealerCard1)
+  sum()
 }
 
 /// Hit button activates hit for user and simulates a turn for dealer
@@ -449,14 +487,20 @@ hitBtn.addEventListener('click', () => {
     user.push(dealCard())
     userCard2.src = user[2].img
     u2.append(userCard2)
+    u2.style.backgroundColor = 'transparent'
+    u2.style.border = '0px'
   } else if (user.length === 3) {
     user.push(dealCard())
     userCard3.src = user[3].img
     u3.append(userCard3)
+    u3.style.backgroundColor = 'transparent'
+    u3.style.border = '0px'
   } else if (user.length === 4) {
     user.push(dealCard())
     userCard4.src = user[4].img
     u4.append(userCard4)
+    u4.style.backgroundColor = 'transparent'
+    u4.style.border = '0px'
   }
   sum()
   setTimeout(() => {

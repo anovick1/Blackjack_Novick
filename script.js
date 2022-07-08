@@ -1,4 +1,3 @@
-///
 /// Global Variables
 ///
 let cards = []
@@ -15,6 +14,7 @@ let lock = false
 let outcome = -1
 let first = true
 let disp = 0
+let bj = false
 
 //// general selectors
 let buttons = document.querySelector('.buttons')
@@ -22,7 +22,6 @@ let stats = document.querySelector('.stats')
 let dSum = document.querySelector('#dSum')
 let uSum = document.querySelector('#uSum')
 let win = document.querySelector('.winner')
-let home = document.querySelector('.home-btn')
 
 /// sums
 let userStat = document.createElement('h1')
@@ -102,6 +101,7 @@ let click = new Audio('sound_effects/click.mp4')
 let yay = new Audio('sound_effects/win.mp4')
 let lose = new Audio('sound_effects/lose.mp4')
 let jack = new Audio('sound_effects/jackpot.mp4')
+let tie = new Audio('sound_effects/tie.mp3')
 
 /// make card objects
 // 0 = clubs
@@ -354,7 +354,8 @@ const sum = () => {
   if (userAce >= 1 && userSum > 21) {
     userSum = userSum - 10
   }
-  if (userSum == 21) {
+  if (userSum == 21 && bj == false) {
+    bj = true
     jack.play()
     winningText.innerText = 'BLACKJACK!!!!!!!'
   }
@@ -414,24 +415,20 @@ const displayWin = () => {
     setTimeout(() => {
       currentMoney += 1 * input.value
       money.innerHTML = 'You have: $' + currentMoney
-      winButtons()
     }, 1500)
+    winButtons()
     money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value
   }
   if (outcome == 1) {
-    setTimeout(() => {
-      currentMoney -= 1 * input.value
-      money.innerHTML = 'You have: $' + currentMoney
-      winButtons()
-    }, 1500)
-    money.innerHTML = 'You have: $' + currentMoney + '  -  $' + input.value
+    money.innerHTML = 'You have: $' + currentMoney
+    winButtons()
   }
   if (outcome == 2) {
     setTimeout(() => {
       currentMoney += 2 * input.value
       money.innerHTML = 'You have: $' + currentMoney
-      winButtons()
     }, 1500)
+    winButtons()
     money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value * 2
   }
 }
@@ -463,6 +460,7 @@ const checkWinner = () => {
     displayWin()
   } else {
     winningText.innerText = 'TIE!'
+    tie.play
     if (userSum == 21) {
       winningText.innerText = 'BLACKJACK...  but Tie'
     }
@@ -523,6 +521,7 @@ const reset = () => {
   lock = false
   first = false
   rip.style.display = 'none'
+  bj = false
 }
 
 const lockBet = () => {
@@ -645,15 +644,15 @@ standBtn.addEventListener('click', () => {
   flipCard()
   setTimeout(() => {
     setTimeout(() => {
-      if (dealerSum < 17 || dealerSum < userSum) {
+      if (dealerSum < 17 && dealerSum < userSum) {
         dealerHit()
       }
       setTimeout(() => {
-        if (dealerSum < 17 || dealerSum < userSum) {
+        if (dealerSum < 17 && dealerSum < userSum) {
           dealerHit()
         }
         setTimeout(() => {
-          if (dealerSum < 17 || dealerSum < userSum) {
+          if (dealerSum < 17 && dealerSum < userSum) {
             dealerHit()
           }
           setTimeout(() => {

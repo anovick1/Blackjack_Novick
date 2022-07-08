@@ -96,7 +96,7 @@ button:hover {
 
 .home {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   height: 100vh;
@@ -139,4 +139,7 @@ input {
   font-size: 20px;
   width: 5vw;
   text-align: center;
+}
+#home-bet {
+  font-size: 20px;
 }

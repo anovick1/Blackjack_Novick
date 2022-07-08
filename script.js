@@ -558,10 +558,11 @@ dealBtn.addEventListener('click', () => {
   if (first) {
     makeDeck()
   }
-  dealBtn.style.display = 'none'
   if (lock == false) {
     lockBet()
   }
+  dealBtn.style.display = 'none'
+
   user.push(dealCard())
   userCard0.src = user[0].img
   cardSound.play()

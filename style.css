@@ -32,6 +32,9 @@ header {
   animation: reveal 0.5s ease-in-out forwards;
   border-radius: 8px;
 }
+/* 
+used this blog to help with card flipping and other animations 
+https://css-tricks.com/snippets/css/keyframe-animation-syntax/  */
 img:before {
   content: '';
   position: absolute;

@@ -12,6 +12,8 @@
 
 #### A simple blackjack game vs the computer.
 
+#### This was my first project for the General Assembly Software Engineering Immersive program. I build this project over the course of 5 days.
+
 ---
 
 ### **Technologies Used**
@@ -25,6 +27,8 @@
 ### **Getting Started**
 
 After you (optionally fork and) clone this repo, open index.html and start playing! You will start put with $100 to gamble with.
+
+The Dealer's hand is the top row, your hand is the bottom row
 
 You can view official blackjack rules [here](https://bicyclecards.com/how-to-play/blackjack/)
 

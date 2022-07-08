@@ -1,3 +1,5 @@
+///JS for home screen
+
 let home = document.querySelector('.home-btn')
 let bjSound = new Audio('sound_effects/bjSound.mp3')
 let submit = document.querySelector('#submit')

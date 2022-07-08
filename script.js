@@ -1,3 +1,4 @@
+///
 /// Global Variables
 ///
 let cards = []
@@ -102,6 +103,10 @@ let yay = new Audio('sound_effects/win.mp4')
 let lose = new Audio('sound_effects/lose.mp4')
 let jack = new Audio('sound_effects/jackpot.mp4')
 let tie = new Audio('sound_effects/tie.mp3')
+
+///
+/// METHODS
+///
 
 /// make card objects
 // 0 = clubs
@@ -524,6 +529,7 @@ const reset = () => {
   bj = false
 }
 
+/// locks bet in
 const lockBet = () => {
   if (input.value > currentMoney) {
     winningText.innerText = 'Place a lower bet'
@@ -666,16 +672,18 @@ standBtn.addEventListener('click', () => {
   }, 500)
 })
 
+/// submits the bet
 submit.addEventListener('click', () => {
   lockBet()
 })
 
+/// reset button to play again
 resetBtn.addEventListener('click', () => {
   click.play()
   reset()
 })
 
-///leaves game
+/// leaves game
 rip.addEventListener('click', () => {
   click.play()
   window.location.href = 'index.html'

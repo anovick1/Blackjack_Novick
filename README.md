@@ -1,6 +1,6 @@
 # Blackjack
 
-## Date: 7/7/2022
+## Date: 7/8/2022
 
 ### By: Avery Novick
 

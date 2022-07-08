@@ -4,7 +4,7 @@
 
 ### By: Avery Novick
 
-#### [<img src = "https://library.kissclipart.com/20190908/aee/kissclipart-github-icon-logo-icon-media-icon-b93d26ddc375e57b.png" height = "25px">](https://https://github.com/anovick1) [<img src = "https://cdn-icons-png.flaticon.com/512/174/174857.png" height = "25px">](https://www.linkedin.com/in/avery-novick-8651a7176/)
+#### [<img src = "https://library.kissclipart.com/20190908/aee/kissclipart-github-icon-logo-icon-media-icon-b93d26ddc375e57b.png" height = "25px">](https://github.com/anovick1) [<img src = "https://cdn-icons-png.flaticon.com/512/174/174857.png" height = "25px">](https://www.linkedin.com/in/avery-novick-8651a7176/)
 
 ---
 
@@ -24,7 +24,11 @@
 
 ### **Getting Started**
 
-After you (optionally fork and) clone this repo, open index.html and start playing!
+After you (optionally fork and) clone this repo, open index.html and start playing! You will start put with $100 to gamble with.
+
+You can view official blackjack rules [here](https://bicyclecards.com/how-to-play/blackjack/)
+
+You can view this project on surge [here](https://averynovickblackjack.surge.sh/)
 
 Have Fun!
 
@@ -53,7 +57,7 @@ Have Fun!
 ### **Task Lists**
 
 - [ ] Enhanced UI
-- [ ] Roulette mini-game for the casino
+- [ ] Allow user to place initial deposit at home screen
 - [x] Simple working JS
 - [x] Solid UI
 

@@ -481,7 +481,6 @@ const reset = () => {
   resetBtn.style.display = 'none'
   user = []
   dealer = []
-  console.log(dealer)
   userSum = 0
   dealerSum = 0
   dealerCard0.src = ''
@@ -544,7 +543,6 @@ const lockBet = () => {
     setTimeout(() => {
       money.innerHTML = 'You have: $' + currentMoney
     }, 2000)
-    // money.innerText = 'You have: $' + currentMoney
     lock = true
   }
 }
@@ -591,8 +589,6 @@ dealBtn.addEventListener('click', () => {
         d1.style.backgroundColor = 'transparent'
         d1.style.border = '0px'
         setTimeout(() => {
-          // buttons.append(hitBtn)
-          // buttons.append(standBtn)
           hitBtn.style.display = 'inline-block'
           standBtn.style.display = 'inline-block'
           sum()

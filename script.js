@@ -404,7 +404,7 @@ const dealerHit = () => {
 const winButtons = () => {
   if (currentMoney <= 0) {
     winningText.innerText =
-      'Dealer wins but you are out of Money! Leave and get more money.'
+      'Dealer wins and you are out of money! Leave and get more money.'
     rip.style.display = 'inline-block'
   } else {
     resetBtn.style.display = 'inline-block'
@@ -420,8 +420,8 @@ const displayWin = () => {
     setTimeout(() => {
       currentMoney += 1 * input.value
       money.innerHTML = 'You have: $' + currentMoney
+      winButtons()
     }, 1500)
-    winButtons()
     money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value
   }
   if (outcome == 1) {
@@ -432,8 +432,8 @@ const displayWin = () => {
     setTimeout(() => {
       currentMoney += 2 * input.value
       money.innerHTML = 'You have: $' + currentMoney
+      winButtons()
     }, 1500)
-    winButtons()
     money.innerHTML = 'You have: $' + currentMoney + '  +  $' + input.value * 2
   }
 }
@@ -532,7 +532,9 @@ const reset = () => {
 const lockBet = () => {
   if (input.value > currentMoney) {
     winningText.innerText = 'Place a lower bet'
+    dealBtn.style.display = 'none'
   } else {
+    dealBtn.style.display = 'inline-block'
     poker.play()
     winningText.innerText = ''
     submit.style.display = 'none'

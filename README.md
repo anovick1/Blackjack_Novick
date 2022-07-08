@@ -12,7 +12,7 @@
 
 #### A simple blackjack game vs the computer.
 
-#### This was my first project for the General Assembly Software Engineering Immersive program. I build this project over the course of 5 days.
+#### This was my first project for the General Assembly Software Engineering Immersive program. I built this project over the course of 5 days.
 
 ---
 
